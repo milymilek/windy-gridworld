@@ -1,6 +1,5 @@
 import pygame
-
-import utils
+import config
 
 
 class Cell(pygame.Rect):
@@ -9,14 +8,13 @@ class Cell(pygame.Rect):
     Coordinates of cell are reversed because of reverse ordering in pygame lib.
     """
     def __init__(self, board, x, y, track):
-        super().__init__(x * utils.BLOCK_SIZE, y * utils.BLOCK_SIZE, utils.BLOCK_SIZE, utils.BLOCK_SIZE)
+        super().__init__(x * config.BLOCK_SIZE, y * config.BLOCK_SIZE, config.BLOCK_SIZE, config.BLOCK_SIZE)
         self.board = board
-        self.track = track
         self.xx = y
         self.yy = x
 
     def __repr__(self):
-        return f'Cell({0}, {self.yy}, {self.xx}, {self.track})'
+        return f'Cell({0}, {self.yy}, {self.xx})'
 
     def setBoard(self, board):
         self.board = board

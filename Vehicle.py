@@ -2,7 +2,7 @@ import numpy as np
 import pygame
 import random
 
-import utils
+import config
 
 
 class Vehicle(pygame.sprite.Sprite):
@@ -16,8 +16,6 @@ class Vehicle(pygame.sprite.Sprite):
     def addVelocity(self, v):
         self.velocity += v
 
-    def move(self):
-        self.rect.move_ip(self.velocity[1] * utils.BLOCK_SIZE, self.velocity[0] * utils.BLOCK_SIZE)
 
     def restart(self):
         self.velocity[:] = 0
@@ -32,10 +30,10 @@ class Vehicle(pygame.sprite.Sprite):
         pygame.draw.rect(self.board.screen, [0, 200, 200], self.rect)
 
     def getX(self):
-        return self.rect.y // utils.BLOCK_SIZE
+        return self.rect.y // config.BLOCK_SIZE
 
     def getY(self):
-        return self.rect.x // utils.BLOCK_SIZE
+        return self.rect.x // config.BLOCK_SIZE
 
     def finish(self):
         meta_upper_x = min([c.xx for c in self.board.track['meta']])
