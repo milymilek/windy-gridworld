@@ -25,7 +25,7 @@ def save_evaluation_results(steps):
 
 def start_action_learn(button, event, pos):
     if event.button == 1 and button.rect.collidepoint(pos):
-        episodes = 10001
+        episodes = 5000
         agent = Agent(button.board)
         td = TDControl(env, agent)
         steps = []
@@ -33,13 +33,13 @@ def start_action_learn(button, event, pos):
         for e in range(1, episodes):
             print(f"Episode: {e}")
             td.sarsa(CLOCK)
-            if not e % 1000:
+            if not e % 500:
                 print("Evaluation...")
                 steps_mean = 0
-                for ev in range(30):
+                for ev in range(10):
                     print(f"ev_{ev}:")
                     steps_mean += td.evaluate(CLOCK)
-                steps_mean /= 30
+                steps_mean /= 10
                 steps.append(steps_mean)
 
         save_evaluation_results(steps)
@@ -65,7 +65,7 @@ if __name__ == '__main__':
     env.createGrid()
 
     start_img = pygame.image.load('img/start.png')
-    eval_img = pygame.image.load('img/eval.png')
+    eval_img = pygame.image.load('img/eval.jpg')
     start_button = Button(env, GRID_WIDTH // 2 - config.ICON_SIZE, GRID_HEIGHT + config.BLOCK_SIZE//2 - config.ICON_SIZE,
                           start_img, start_action_learn)
     eval_button = Button(env, GRID_WIDTH - 2 * config.ICON_SIZE, GRID_HEIGHT + config.BLOCK_SIZE//2 - config.ICON_SIZE,

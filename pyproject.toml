@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "windy-gridworld"
+version = "0.0.0"
+description = "Reinforcement learning Windy Gridworld"
+authors = ["Milosz <milosz.hanczyk01@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.10.*"
+numpy = "^1.26.4"
+pygame = "^2.5.2"
+matplotlib = "^3.9.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^6.2.5"
+ruff = "^0.4.3"
+jupyterlab = "^4.0.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

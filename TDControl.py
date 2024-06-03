@@ -58,7 +58,7 @@ class TDControl:
 
         return a
 
-    def refreshFrame(self, CLOCK, fps=10):
+    def refreshFrame(self, CLOCK, fps=60):
         self.env.screen.fill(config.BLACK)
         self.env.draw()
         self.agent.draw()
